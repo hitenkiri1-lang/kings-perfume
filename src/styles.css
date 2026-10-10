@@ -1,0 +1,209 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-burgundy: var(--burgundy);
+  --color-burgundy-foreground: var(--burgundy-foreground);
+  
+  --font-serif: "Poppins", Arial, sans-serif;
+  --font-sans: "Poppins", Arial, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  
+  /* Bespoke Haute Parfumerie Light Palette — Warm Alabaster, Imperial Gold, Obsidian Noir */
+  --background: #FCFBF7; /* Warm silk alabaster */
+  --foreground: #181512; /* Deep warm obsidian noir */
+  
+  --card: #FFFFFF; /* Pure royal porcelain */
+  --card-foreground: #181512;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #181512;
+
+  --primary: #181512; /* Imperial Noir */
+  --primary-foreground: #FCFBF7;
+
+  --secondary: #F6F3EC; /* Warm ivory linen */
+  --secondary-foreground: #47413A;
+  
+  --muted: #F4EFE7;
+  --muted-foreground: #7E756B;
+  
+  --accent: #EFE9DE; 
+  --accent-foreground: #181512;
+
+  --gold: #C5A059; /* Antique imperial champagne gold */
+  --gold-foreground: #181512;
+
+  --burgundy: #6E1B2B; /* Royal French velvet wine */
+  --burgundy-foreground: #FFFFFF;
+
+  --border: #E8E2D6; /* Fine French deckle-edge paper border */
+  --input: #E8E2D6;
+  --ring: #C5A059;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background-color: #C5A059;
+    color: #FFFFFF;
+  }
+}
+
+/* Luxury Micro-Interactions & Animations */
+@keyframes gold-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.gold-shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.gold-shimmer-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.25), transparent);
+  transform: translateX(-100%);
+  transition: none;
+}
+.gold-shimmer-sweep:hover::after {
+  animation: gold-shimmer 1.2s ease-in-out;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+/* Editorial typography and accents */
+.editorial-kicker {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #DFBE7B 0%, #C5A059 50%, #9B7836 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.luxury-card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(24, 21, 18, 0.05), 0 1px 3px rgba(24, 21, 18, 0.03);
+}
+
+.luxury-card-shadow-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.luxury-card-shadow-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(197, 160, 89, 0.15), 0 4px 12px rgba(24, 21, 18, 0.04);
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+.glass-luxury {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 226, 214, 0.7);
+}
+
+.glass-luxury-dark {
+  background: rgba(24, 21, 18, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+@utility marquee-viewport { overflow: hidden; width: 100%; }
+@utility marquee-track { display: flex; width: max-content; animation: marquee 35s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #FAF7F2; }
+::-webkit-scrollbar-thumb { background: #DDD5C7; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C5A059; }
+
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50%, 100% {
+    transform: translateX(100%);
+  }
+}
